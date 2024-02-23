@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  app:
+    image: webdevops/php-nginx:7.4
+    container_name: laravel_app
+    restart: unless-stopped
+    volumes:
+      - ./:/app
+    environment:
+      - WEB_DOCUMENT_ROOT=/app/public
+      - PHP_DATE_TIMEZONE=UTC
+      - PHP_MEMORY_LIMIT=2048M
+      - DB_HOST=db
+      - DB_DATABASE=laravel
+      - DB_USERNAME=laraveluser
+      - DB_PASSWORD=secret
+    depends_on:
+      - db
+    ports:
+      - "8000:80"
+
+  db:
+    image: mysql:5.7
+    container_name: laravel_db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laraveluser
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  dusk:
+    image: selenium/standalone-chrome
+    container_name: laravel_dusk
+    restart: unless-stopped
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - app
+
+volumes:
+  db_data:
