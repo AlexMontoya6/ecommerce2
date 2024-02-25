@@ -3,8 +3,7 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Models\Category;
-use App\Models\Subcategory;
+use App\Models\{Category,Subcategory};
 use Tests\TestCase;
 use Illuminate\Support\Str;
 

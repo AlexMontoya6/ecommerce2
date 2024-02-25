@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
 use App\Models\Subcategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -30,7 +31,7 @@ class ProductFactory extends Factory
             'subcategory_id' => $subcategory->id,
             'brand_id' => $brand->id,
             'quantity'=> $subcategory->color ? null : 15,
-            'status' => 2
+            'status' => Product::PUBLICADO
         ];
     }
 }

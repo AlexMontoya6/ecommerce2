@@ -4,7 +4,6 @@ namespace Tests;
 
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Support\Facades\Artisan;
-
 trait CreatesApplication
 {
     /**
