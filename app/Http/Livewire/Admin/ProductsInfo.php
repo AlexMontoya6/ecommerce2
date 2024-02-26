@@ -49,7 +49,12 @@ class ProductsInfo extends Component
     }
     public function render()
     {
-        $products = Product::where('name', 'LIKE', "%{$this->search}%")->paginate(10);
+        $rowCount=10;
+        if(request("itemsPerPage"))
+        {
+            $rowCount = request("itemsPerPage");
+        }
+        $products = Product::where('name', 'LIKE', "%{$this->search}%")->paginate($rowCount);
 
         return view('livewire.admin.products-info', compact('products'))->layout('layouts.admin');
     }

@@ -163,7 +163,7 @@
                             @endif
                             @if ($products->hasPages())
                                 <div class="px-6 py-4">
-                                    {{ $products->links() }}
+                                    {{ $products->links("pagination::tailwind") }}
                                 </div>
                             @endif
                         </x-table-responsive>
