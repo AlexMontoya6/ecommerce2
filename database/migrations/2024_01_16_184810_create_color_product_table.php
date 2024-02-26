@@ -19,8 +19,9 @@ class CreateColorProductTable extends Migration
             $table->foreignId('color_id')->references('id')->on('colors')->onDelete('cascade');
             $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
 
-            $table->integer('quantity');
-
+            // $table->integer('quantity');
+            // considero que este campo sobra
+            $table->integer('quantity')->nullable();
             $table->timestamps();
         });
     }
