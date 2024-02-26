@@ -141,8 +141,6 @@
                                                                 [{{ $color->name }}]
                                                                 {{ $color->pivot->quantity }}
                                                             @endforeach
-                                                        @else
-                                                            Sin Color
                                                         @endif
                                                     @endif
 
